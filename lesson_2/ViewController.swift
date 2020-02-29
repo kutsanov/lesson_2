@@ -25,17 +25,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        initCtrl()
+
         setWindowBg()
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        initCtrl()
+
     }
     
     private func initCtrl() {
         
         // Устанавливаем градиент
-        
         let view = UIView(frame: CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height))
         let gradient = CAGradientLayer()
         
@@ -47,6 +50,7 @@ class ViewController: UIViewController {
         
         mainView.layer.insertSublayer(gradient, at: 0)
         
+        //Настрииваем красивость окна для цветов
         windowColor.layer.cornerRadius = 30
         windowColor.layer.shadowColor = UIColor.black.cgColor
         windowColor.layer.shadowOpacity = 0.5
