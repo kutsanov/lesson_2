@@ -27,19 +27,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         setWindowBg()
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         initCtrl()
-
     }
     
     private func initCtrl() {
         
+        /*
+         При повороте градиент никак не хотел растягиваться на всю ширину
+         Высчитал максимально возможную ширину
+         */
+        let w = (mainView.frame.width > mainView.frame.height) ? mainView.frame.width : mainView.frame.height
+        
         // Устанавливаем градиент
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: w, height: w))
         let gradient = CAGradientLayer()
         
         let colorBgTop = #colorLiteral(red: 0.3367069662, green: 0.3678298891, blue: 0.7136109471, alpha: 1).cgColor
@@ -56,10 +61,6 @@ class ViewController: UIViewController {
         windowColor.layer.shadowOpacity = 0.5
         windowColor.layer.shadowOffset = CGSize(width: 5, height: 5)
         windowColor.layer.shadowRadius = 10
-        
-        
-        
-        
     }
     
     private func setWindowBg() {
@@ -89,7 +90,6 @@ class ViewController: UIViewController {
         setWindowBg()
     }
     
-    
-    
 }
+
 
